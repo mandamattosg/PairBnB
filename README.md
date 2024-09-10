@@ -21,3 +21,8 @@ Projeto do Curso Ionic - Build iOS, Android &amp; Web Apps with Ionic &amp; Angu
 * Da mesma forma, em Offers é possível ver suas ofertas, editá-las ou adicionar uma nova;
 * Ao adicionar uma oferta deve-se colocar o título, uma descrição curta, preço, datas disponíveis, localização e uma foto;
 * O aplicativo também conta com avisos em casos de erro. Foi demonstrado como exemplo o aviso na falha do login.
+  
+
+https://github.com/user-attachments/assets/7fd7944d-3587-4970-bd0c-eff11e8cc997
+
+
