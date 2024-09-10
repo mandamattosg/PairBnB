@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places/tabs/offers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Offer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <form (ngSubmit)="onCreateOffer()" [formGroup]="form!!">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-input color="primary" formControlName="title" label="Title" labelPlacement="floating" type="text" autocomplete autocorrect></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3"> 
+        <ion-label position="floating">Short Description</ion-label>
+        <ion-textarea color="primary" formControlName="description" rows="3" ></ion-textarea>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!form!!.get('description')!!.valid && form!!.get('description')!!.touched">
+      <ion-col size-sm="6" offset-sm="3" > 
+          <p style="color: #c5000f;"> Description must be between 1 and 180 characters!</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-input color="primary" label="Price" formControlName="price" labelPlacement="floating" type="number"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="4" offset-sm="2">
+        <ion-item>
+          <ion-datetime
+            min="2019-01-01"
+            max="2025-12-31"
+            formControlName="dateFrom"
+          ><span slot="title">Available from</span></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col size-sm="4">
+        <ion-item>
+          <ion-datetime
+            min="2019-01-02"
+            max="2025-12-31"
+            formControlName="dateTo"
+          >
+          <span slot="title">Available to</span></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <app-location-picker [showPreview]="form!!.get('location')!!.value" (locationPick)="onLocationPicked($event)"></app-location-picker>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <app-image-picker [showPreview]="form!!.get('image')!!.value" (imagePick)="onImagePicker($event)"></app-image-picker>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-button
+          type="submit"
+          color="primary"
+          expand="block"
+          [disabled]="!form!!.valid"
+        >
+          Add!
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+</ion-content>

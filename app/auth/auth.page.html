@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{isLogin?'Login':'Signup'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-item>
+          <ion-input #emailCtrl="ngModel" label="E-mail" ngModel name="email" labelPlacement="floating" required email type="email"></ion-input>
+        </ion-item>
+        <p *ngIf="!emailCtrl.valid && emailCtrl.touched">Should be a valid e-mail address.</p>
+        <ion-item>
+          <ion-input #psswrdCtrl="ngModel" label="Password" ngModel name="password" labelPlacement="floating" required minlength="6" type="password"></ion-input>
+        </ion-item>
+        <p *ngIf="!psswrdCtrl.valid && psswrdCtrl.touched">Should be at least 6 characters long.</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-button (click)="onSwitch()" color="primary" fill="clear" expand="block">Switch to {{isLogin ? 'Signup' : 'Login'}}</ion-button>
+        <!--<ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>-->
+        <ion-button color="primary" type="submit" expand="block" [disabled]="!f.valid">{{isLogin ? 'Login' : 'Signup'}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+</ion-content>
